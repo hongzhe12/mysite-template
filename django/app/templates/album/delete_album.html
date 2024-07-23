@@ -1,0 +1,19 @@
+<!-- delete_album.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>确认删除相册</title>
+    <link href="{% static 'accounts/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <h1>确认删除相册</h1>
+        <p>确定要删除相册 "{{ album.name }}" 吗？</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">确定删除</button>
+            <a href="{% url 'album:album_detail' album.id %}" class="btn btn-secondary">取消</a>
+        </form>
+    </div>
+</body>
+</html>

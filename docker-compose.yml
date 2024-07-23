@@ -1,0 +1,83 @@
+name: mysite
+
+services:
+  django:
+    container_name: mysite-django
+    restart: always
+    build:
+      context: ./django
+      dockerfile: Dockerfile
+    entrypoint: ["/home/app/django/entrypoint.sh"]
+    volumes:
+      - ./django/app:/home/app/django
+      - django_static:/home/app/django/static
+      - django_media:/home/app/django/media
+    depends_on:
+      - postgres
+    expose:
+      - 8000
+    networks:
+      - mysite_network
+    env_file:
+      - ./django/.env
+
+  nginx:
+    container_name: mysite-nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - django_static:/home/app/django/static
+      - django_media:/home/app/django/media
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - mysite_network
+
+  postgres:
+    image: postgres:13.14-bullseye
+    container_name: mysite-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - mysite_network
+    env_file:
+      - ./postgres/.env
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    restart: unless-stopped
+    volumes:
+      - "./minio/data:/data"
+      - "./minio/minio:/minio"
+      - "./minio/config:/root/.minio"
+    environment:
+      TZ: Asia/Shanghai
+      LANG: en_US.UTF-8
+      MINIO_PROMETHEUS_AUTH_TYPE: "public"
+      MINIO_ACCESS_KEY: "hongzhe123"
+      MINIO_SECRET_KEY: "hongzhe123"
+    command: server /data  --console-address ":9010"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+    ports:
+      - "9010:9010"
+      - "9000:9000"
+
+volumes:
+  django_static:
+    name: "mysite_django_static"
+  django_media:
+    name: "mysite_django_media"
+  postgres_data:
+    name: "mysite_postgres_data"
+
+networks:
+  mysite_network:
+    driver: bridge

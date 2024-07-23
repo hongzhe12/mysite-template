@@ -1,0 +1,23 @@
+<!-- album_list.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>相册列表</title>
+    <link href="{% static 'accounts/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <h1>相册列表</h1>
+        <ul class="list-group">
+            {% for album in albums %}
+                <li class="list-group-item">
+                    <a href="{% url 'album:album_detail' album.id %}">{{ album.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'album:add_album' %}" class="btn btn-primary mt-3">添加相册</a>
+    </div>
+</body>
+</html>

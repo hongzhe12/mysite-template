@@ -1,0 +1,21 @@
+<!-- add_album.html -->
+{% load static %}  <!-- 如果需要使用本地的静态文件，可以加载 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>添加相册</title>
+    <link href="{% static 'accounts/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">添加相册</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <a href="{% url 'album:album_list' %}" class="btn btn-secondary mt-2">返回相册列表</a>
+    </div>
+</body>
+</html>
