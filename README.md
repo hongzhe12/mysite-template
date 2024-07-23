@@ -13,3 +13,11 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
+镜像导入
+```bash
+docker load -i mysite-django.tar.gz
+docker load -i mysite-nginx.tar.gz
+docker load -i minio.tar.gz
+docker load -i mysite-postgres.tar.gz
+
+```
