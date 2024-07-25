@@ -167,7 +167,7 @@ else:
     AWS_S3_CUSTOM_DOMAIN = None  # 自定义域名（如果有）
     AWS_S3_FILE_OVERWRITE = False  # 防止文件被覆盖
     AWS_DEFAULT_ACL = None  # 默认的文件访问权限
-    AWS_QUERYSTRING_AUTH = False  # 生成文件 URL 时是否添加查询字符串认证信息
+    AWS_QUERYSTRING_AUTH = True  # 生成文件 URL 时是否添加查询字符串认证信息
     # 配置静态文件和媒体文件的存储
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
