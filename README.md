@@ -21,3 +21,9 @@ docker load -i minio.tar.gz
 docker load -i mysite-postgres.tar.gz
 
 ```
+
+# 收集静态资源
+```bash
+docker exec -it -uroot mysite-django python manage.py collectstatic
+
+```

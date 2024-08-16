@@ -56,6 +56,8 @@ COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache /wheels/* -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+# collect static files
+RUN python manage.py collectstatic --noinput
 
 # chown all the files to the app user
 RUN chown -R app:app $HOME
