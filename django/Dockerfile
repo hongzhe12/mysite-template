@@ -56,9 +56,6 @@ COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --no-cache /wheels/* -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-# 复制启动脚本
-COPY entrypoint.sh /home/app/django/entrypoint.sh
-RUN chmod +x /home/app/django/entrypoint.sh
 
 # chown all the files to the app user
 RUN chown -R app:app $HOME
