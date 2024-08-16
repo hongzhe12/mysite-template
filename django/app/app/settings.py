@@ -161,18 +161,18 @@ else:
     '''
         如需开启文件存储服务请取消下面注释
     '''
-    # AWS_ACCESS_KEY_ID = 'FJm2RxWoHkfbwSsSVFqB'  # 你的 MinIO Access Key
-    # AWS_SECRET_ACCESS_KEY = 'DBF9NAY8IHB90vyGArflaR2aKtKty0p9EAdhgYUl'  # 你的 MinIO Secret Key
-    # AWS_STORAGE_BUCKET_NAME = 'album'  # 你的存储桶名称
-    # AWS_S3_ENDPOINT_URL = 'http://192.168.3.106:9000'  # MinIO 服务器地址（本机测试用ipv4地址）
-    # AWS_S3_REGION_NAME = 'us-east-1'  # MinIO 默认区域
-    # AWS_S3_SIGNATURE_VERSION = 's3v4'
-    # AWS_S3_CUSTOM_DOMAIN = None  # 自定义域名（如果有）
-    # AWS_S3_FILE_OVERWRITE = False  # 防止文件被覆盖
-    # AWS_DEFAULT_ACL = None  # 默认的文件访问权限
-    # AWS_QUERYSTRING_AUTH = True  # 生成文件 URL 时是否添加查询字符串认证信息
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置静态文件的存储
-    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置文件的存储
+    AWS_ACCESS_KEY_ID = 'hongzhe123'  # 你的 MinIO Access Key
+    AWS_SECRET_ACCESS_KEY = 'hongzhe123'  # 你的 MinIO Secret Key
+    AWS_STORAGE_BUCKET_NAME = 'album'  # 你的存储桶名称
+    AWS_S3_ENDPOINT_URL = 'http://127.0.0.1:9000'  # MinIO 服务器地址（本机测试用ipv4地址）
+    AWS_S3_REGION_NAME = 'us-east-1'  # MinIO 默认区域
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_CUSTOM_DOMAIN = None  # 自定义域名（如果有）
+    AWS_S3_FILE_OVERWRITE = False  # 防止文件被覆盖
+    AWS_DEFAULT_ACL = None  # 默认的文件访问权限
+    AWS_QUERYSTRING_AUTH = True  # 生成文件 URL 时是否添加查询字符串认证信息
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置静态文件的存储
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置文件的存储
 
 
 MEDIA_URL = '/media/'
