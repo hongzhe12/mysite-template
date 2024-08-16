@@ -149,6 +149,7 @@ if DEBUG:
     STATICFILES_DIRS = [
         BASE_DIR / "static",
     ]
+    MEDIA_URL = '/media/'
 
 else:
     '''
@@ -173,9 +174,7 @@ else:
     AWS_QUERYSTRING_AUTH = True  # 生成文件 URL 时是否添加查询字符串认证信息
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置静态文件的存储
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # 配置文件的存储
-
-
-MEDIA_URL = '/media/'
+    MEDIA_URL = ''
 
 # 设置日志目录
 LOG_DIR = Path(__file__).resolve().parent / 'logs'
